@@ -46,7 +46,7 @@ public class Progpoepart1 {
 
             // NEW (Part 2): only logged in users can use QuickChat
             if (app.loginUser(loginUser, loginPass)) {
-                QuickChat.startChat(scanner);
+               QuickChat.startChat(scanner, app.getFirstName());
             } else {
                 System.out.println("You must log in successfully to send messages.");
             }
