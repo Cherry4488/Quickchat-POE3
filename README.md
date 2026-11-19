@@ -34,19 +34,19 @@ Rules the program checks
 Structure of the program
 
 ```
-Quickchat-POE2/
+QuickChat repository
+├── .github/workflows/TestJava.yml  (GitHub Actions: compiles the code and runs the unit tests)
 ├── pom.xml
-├── .github/workflows/maven.yml     (GitHub Actions: runs the unit tests)
-└── src/
-    ├── main/java/com/mycompany/progpoepart1/
-    │   ├── Login.java              (Part 1 login class + checkCellPhoneNumber())
-    │   ├── Progpoepart1.java       (main class: register, login, then start QuickChat)
-    │   ├── Message.java            (message details and all message methods)
-    │   └── QuickChat.java          (menu and user input)
-    └── test/java/com/mycompany/progpoepart1/
-        ├── LoginTest.java          (Part 1 tests + tests for the cell number check)
-        └── MessageTest.java        (JUnit tests for the Message class)
+├── messages.json                   (stored messages)
+├── Login.java                      (Part 1 login class + checkCellPhoneNumber())
+├── Progpoepart1.java               (main class: register, login, then start QuickChat)
+├── Message.java                    (message details, the arrays and all message methods)
+├── QuickChat.java                  (menus and user input)
+├── LoginTest.java                  (Part 1 tests + tests for the cell number check)
+├── MessageTest.java                (JUnit tests for the Part 2 Message methods)
+└── StoredMessagesTest.java         (JUnit tests for Part 3)
 ```
+The Gson library is added to the NetBeans project under Libraries. GitHub Actions downloads Gson and JUnit itself each time it runs the tests.
 
 What each does
 
