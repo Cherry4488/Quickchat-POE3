@@ -25,7 +25,7 @@ jobs:
           curl -L -o libs/junit-console.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.2/junit-platform-console-standalone-1.10.2.jar
 
       - name: Compile the code and the tests
-        run: javac -cp "libs/gson.jar:libs/junit-console.jar" -d out $(find src test -name "*.java")
+        run: javac -cp "libs/gson.jar:libs/junit-console.jar" -d out $(find . -name "*.java")
 
       - name: Run the unit tests
         run: java -jar libs/junit-console.jar --class-path "out:libs/gson.jar" --scan-class-path out
