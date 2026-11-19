@@ -1,0 +1,31 @@
+name: TestJava
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Download Gson and JUnit
+        run: |
+          mkdir -p libs
+          curl -L -o libs/gson.jar https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar
+          curl -L -o libs/junit-console.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.2/junit-platform-console-standalone-1.10.2.jar
+
+      - name: Compile the code and the tests
+        run: javac -cp "libs/gson.jar:libs/junit-console.jar" -d out $(find src test -name "*.java")
+
+      - name: Run the unit tests
+        run: java -jar libs/junit-console.jar --class-path "out:libs/gson.jar" --scan-class-path out
